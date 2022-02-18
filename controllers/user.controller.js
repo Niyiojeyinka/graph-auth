@@ -161,7 +161,7 @@ exports.sendVerificationMail = (user) => {
         url: BASE_URL + "/verify/" + verificationData.token,
       },
       "verification",
-      (error, resp) => {
+      (error) => {
         if (error) {
           throw new Error(error.toString());
         }
@@ -189,7 +189,7 @@ exports.sendEmailVerifiedMail = (user) => {
         name: user.name,
       },
       "email_verified",
-      (error, resp) => {
+      (error) => {
         if (error) {
           throw new Error(error.toString());
         }

@@ -10,8 +10,8 @@ A Javascript backend app nodejs/Express
 
 ## Stacks
 
-- Javascript/NodeJS/ExpressJS
-- Sequelize ORM
+- Javascript/NodeJS/ExpressJS/Mongodb
+- Mongoose ORM
 - Mysql
 
 ## INSTALLATION
