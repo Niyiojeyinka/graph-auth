@@ -1,24 +1,13 @@
-const request = require("supertest");
 const expect = require("chai").expect;
-const app = require("../app");
+const authController = require("../controllers/user.controller");
 
-before((done) => {
-  setTimeout(() => {
-    done();
-  }, 1000);
-});
 
-const userDetails = {
-  name: "Olaniyi ojeyinka",
-  email: "olaniyiojeyinka@gmail.com",
-  password: "test1234",
-};
 
-describe("/api/auth/user/register USER registration", () => {
+
+describe("Registration test", () => {
+  const regPayload = { email: "olaniyiojeyinka@gmail.com", name: "john doe", mobileNumber: "2347086825", country: "Nigeria" }
   it("New User can register", async () => {
-    const response = await request(app)
-      .post("/api/auth/register")
-      .send(userDetails);
+
     expect(response.status).to.be.equal(201);
   });
 });
