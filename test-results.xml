@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.1960" tests="5" failures="5">
+  <testsuite name="Root Suite" timestamp="2021-08-28T15:42:03" tests="0" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="/api/auth/user/register USER registration" timestamp="2021-08-28T15:42:03" tests="1" file="/home/olaniyi/Workspace/Quidax/tests/auth.test.js" time="0.0420" failures="1">
+    <testcase name="/api/auth/user/register USER registration New User can register" time="0.0420" classname="New User can register">
+      <failure message="expected 400 to equal 201" type="AssertionError"><![CDATA[AssertionError: expected 400 to equal 201
+    at Context.<anonymous> (tests/auth.test.js:27:35)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="/api/auth/login USER authentication " timestamp="2021-08-28T15:42:03" tests="2" file="/home/olaniyi/Workspace/Quidax/tests/auth.test.js" time="0.0250" failures="2">
+    <testcase name="/api/auth/login USER authentication  User can sign in" time="0.0160" classname="User can sign in">
+      <failure message="expected 404 to equal 200" type="AssertionError"><![CDATA[AssertionError: expected 404 to equal 200
+    at Context.<anonymous> (tests/auth.test.js:38:35)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)]]></failure>
+    </testcase>
+    <testcase name="/api/auth/login USER authentication  Wrong User Details can&apos;t  sign in" time="0.0090" classname="Wrong User Details can&apos;t  sign in">
+      <failure message="expected 404 to equal 401" type="AssertionError"><![CDATA[AssertionError: expected 404 to equal 401
+    at Context.<anonymous> (tests/auth.test.js:47:35)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="api/books Books Test " timestamp="2021-08-28T15:42:04" tests="2" file="/home/olaniyi/Workspace/Quidax/tests/book.hold.js" time="0.1290" failures="2">
+    <testcase name="api/books Books Test  Book can be added" time="0.1220" classname="Book can be added">
+      <failure message="expect is not defined" type="ReferenceError"><![CDATA[ReferenceError: expect is not defined
+    at Context.<anonymous> (tests/book.hold.js:33:5)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)]]></failure>
+    </testcase>
+    <testcase name="api/books Books Test  Book can be Edited" time="0.0070" classname="Book can be Edited">
+      <failure message="expect is not defined" type="ReferenceError"><![CDATA[ReferenceError: expect is not defined
+    at Context.<anonymous> (tests/book.hold.js:49:5)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

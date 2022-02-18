@@ -1,0 +1,24 @@
+version: "3"
+services:
+  backendservice:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 4000:4000
+    volumes:
+      - "./:/usr/src/app"
+    depends_on:
+      - mysqldbservice
+      - mysqltestdbservice
+  mysqldbservice:
+    image: "mysql:8.0"
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mysqldbservice
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: root
+    volumes:
+      - ./storage/dbdata:/var/lib/mysql
