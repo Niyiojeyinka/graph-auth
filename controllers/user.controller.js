@@ -101,6 +101,20 @@ exports.getAllUsers = async () => {
   }
 };
 
+
+
+/** get single user
+ */
+exports.getSingleUser = async (_id) => {
+  try {
+    const user = await User.findOne({_id:_id}).populate("verification");
+
+    return user;
+  } catch (e) {
+    throw new Error(e.message);
+  }
+};
+
 exports.verifyEmail = async (verifyToken) => {
   try {
     const { EMAIL_VERIFICATION_EXPIRY_MINUTES } = process.env;

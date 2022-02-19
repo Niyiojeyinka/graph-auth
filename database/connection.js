@@ -13,8 +13,12 @@ exports.connect = async (url) => {
   console.log(" 🚀 DB connected Successfully", url);
 };
 
-exports.dropDatabase = () => {
-  mongoose.connection.db.dropDatabase(() => {
-    mongoose.connection.close();
-  });
+exports.dropDatabase = async(url) => {
+  const conn = mongoose.createConnection(url);
+  await conn.dropDatabase();
+  conn.close()
+
 };
+
+
+ 

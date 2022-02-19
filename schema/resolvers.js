@@ -1,4 +1,4 @@
-const models = require("../database/models/index");
+const authController = require("../controllers/user.controller");
 
 
 const resolvers = {
@@ -6,15 +6,13 @@ const resolvers = {
 
       async user(root, { _id }) {
  
-        return await models.User.findOne({_id:_id}).populate("verification");
+        return await authController.getSingleUser(_id);
       },
       async users(root, args, { models }) {
 
-        return await models.User.find({}).populate("verification");
+        return await  authController.getAllUsers()
       }
-    //   async recipe(root, { id }, { models }) {
-    //     return models.Recipe.findById(id);
-    //   },
+    
     },
   };
   

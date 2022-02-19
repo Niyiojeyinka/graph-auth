@@ -71,3 +71,5 @@ describe("Authentication testing", () => {
   });
 
 });
+
+connection.dropDatabase(process.env.DB_TEST_URL)
