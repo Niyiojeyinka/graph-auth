@@ -167,7 +167,7 @@ exports.sendVerificationMail = async (user) => {
       {
         name: user.name,
         title: MAIL_VERIFY_TITLE,
-        url: BASE_URL + "/verify/" + token,
+        url: BASE_URL + "/api/verify/" + token,
       },
       "verification"
     );
