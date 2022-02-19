@@ -6,19 +6,15 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - 4000:4000
-    volumes:
-      - "./:/usr/src/app"
+    # volumes:
+    #   - "./:/usr/src/app"
     depends_on:
-      - mysqldbservice
-      - mysqltestdbservice
-  mysqldbservice:
-    image: "mysql:8.0"
+      - mongodbservice
+  mongodbservice:
+    image: "mongo:latest"
     ports:
-      - 3308:3306
+      - 27017:27017
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mysqldbservice
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: root
-    volumes:
-      - ./storage/dbdata:/var/lib/mysql
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
