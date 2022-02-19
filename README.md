@@ -6,7 +6,7 @@ A Javascript backend app nodejs/Express
 
 - NodeJS
 - NPM
-- MYSQL
+- MONGODB
 
 ## Stacks
 
