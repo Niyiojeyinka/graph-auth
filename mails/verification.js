@@ -1,5 +1,5 @@
 exports.view = (data) => {
-    return `
+  return `
       <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -13,10 +13,15 @@ exports.view = (data) => {
       <br><br>
       
       
-      please click the link below to verify your account 🙏 <br>
+      please click the link below to verify your account 🙏 <br><br>
 
-
+      <a href="${data.url}"> Click here to verify</a>
+<br><br>
+      or 
+      <br><br>
         ${data.url}
+
+        <br><br>
 
 
         Have a great day!!!  🚀 🚀 🚀 🚀 
@@ -25,4 +30,4 @@ exports.view = (data) => {
   </html>
       
       `;
-  };
+};

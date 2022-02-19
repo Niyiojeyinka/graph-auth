@@ -64,7 +64,20 @@ startApolloServer()
 
 app.use(express.json());
 app.use("/public", express.static(path.join(__dirname, "public")));
-// app.use("/api/auth/", useCor, authRoute);
+ app.use("/api/auth", useCor, async(req,res)=>{
+  const authController = require("./controllers/user.controller");
+
+  const regPayload = { email: "olaniyiojeyinka@gmail.com", 
+  name: "john doe", mobileNumber: "2347086825",
+   country: "Nigeria" , password: "mypassword" }
+
+  const response = await authController.register(regPayload);
+
+  return res.json({
+    success:true,
+    ...response
+  })
+ });
 
  
 app.listen({ port: 4000 }, () =>

@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 
 exports.validateEmail = (email) => {
@@ -14,32 +15,53 @@ exports.validateEmail = (email) => {
  * @param {*} receiver receiver email
  * @param {*} valueObjects values to transfer to view files
  * @param {*} fileName name of email template file
- * @param {*} handleResult  callback function with error ,info
  *  object (info.response) as parameter respectively
  */
-exports.sendMail = (receiver, valueObjects, fileName, handleResult) => {
+exports.sendMail = (receiver, valueObjects, fileName ) => {
+try{
+  const {MAIL_HOST, MAIL_SECURE,MAIL_FROM,MAIL_PORT,MAIL_USER,MAIL_PASS} = process.env
 
-  const {MAIL_HOST, MAIL_FROM,MAIL_PORT,MAIL_SECURE,MAIL_USER,MAIL_PASS} = process.env
 
-  const transporter = nodemailer.createTransport({
-    pool: true,
-    host:MAIL_HOST,
-    port: MAIL_PORT,
-    secure: MAIL_SECURE, // use TLS
+  const configs = {
+    // pool: true,
+    host: MAIL_HOST,
+    port: parseInt(MAIL_PORT),
+    // secure: Boolean(MAIL_SECURE), // use TLS
     auth: {
       user: MAIL_USER,
       pass: MAIL_PASS,
-    },
-  });
+    }
+
+  }
+
+ 
+  const transporter = nodemailer.createTransport(configs);
 
   const mailFile = require("../mails/" + fileName);
 
   const mailOptions = {
-    from: MAIL_FROM,
+    // from: MAIL_FROM,
     to: receiver,
     subject: valueObjects.title,
     html: mailFile.view(valueObjects),
   };
 
-  transporter.sendMail(mailOptions, handleResult);
+
+
+  transporter.sendMail(mailOptions, (err, info) => {
+    if(err){
+        console.log(err);
+        return next(err);
+    }
+    console.log("Info: ", info);
+    console.log({
+      message: "Email successfully sent."
+    });
+  });
+}catch(e){
+  console.log(e.message)
+}
 };
+
+
+
