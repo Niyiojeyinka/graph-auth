@@ -11,6 +11,15 @@ const typeDefs = gql`
     verification: Verification
   }
 
+  type AuthResponse {
+    token: String!
+    user: User!
+  }
+
+  type MessageResponse {
+  message: String!
+  }
+
   enum UserStatus {
     ACTIVE
     INACTIVE
@@ -25,11 +34,15 @@ const typeDefs = gql`
     user(_id: ID!): User
     users: [User!]!
   }
+
+  type Mutation {
+    registerUser(name: String!, email: String!, password: String!, country: String!, mobileNumber: String!): User!
+    login (email: String!, password: String!): AuthResponse!
+    resendVerificationEmail (token: String!): MessageResponse!
+    verifyEmail (token: String!): MessageResponse!
+  }
 `;
 
 module.exports = typeDefs;
 
-// type Mutation {
-//   createUser(name: String!, email: String!, password: String!,country:Country! ,mobileNumber:String!): User!
-
-// }
+ 

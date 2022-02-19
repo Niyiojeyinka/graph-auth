@@ -26,10 +26,10 @@ exports.sendMail = (receiver, valueObjects, fileName) => {
     } = process.env;
 
     const configs = {
-      pool: true,
+      // pool: true,
       host: MAIL_HOST,
       port: parseInt(MAIL_PORT),
-      secure: Boolean(MAIL_SECURE), // use TLS
+      // secure: Boolean(MAIL_SECURE), // use TLS
       auth: {
         user: MAIL_USER,
         pass: MAIL_PASS,

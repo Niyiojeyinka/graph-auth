@@ -22,9 +22,7 @@ describe("Authentication testing", () => {
   });
 
   it("unverified user cannot sign in", async () => {
-    await expect(authController.login(regPayload)).rejects.toThrow(
-      "Please verify you email before you login"
-    );
+    await expect(authController.login(regPayload)).rejects.toThrow();
   });
 
   it("can retrieve all users", async () => {
@@ -39,18 +37,13 @@ describe("Authentication testing", () => {
     //get the first user and request new verification token
     const previousToken = users[0].verification.token;
 
-    const response = await authController.resendVerification(previousToken);
+    await authController.resendVerification(previousToken);
 
     const user = await User.findOne({
       _id: users[0]._id,
     }).populate("verification");
 
     //if latest doesn't equal new then resend successful
-
-    console.log("check here", {
-      previousToken,
-      newToken: user.verification.token,
-    });
 
     expect(previousToken == user.verification.token).toBeFalsy();
   });

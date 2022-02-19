@@ -6,7 +6,7 @@ const typeDefs = require("./schema/type-defs");
 const resolvers = require("./schema/resolvers");
 const connection = require("./database/connection");
 const models = require("./database/models/index");
-const apiRoutes = require("./routes")
+const apiRoutes = require("./routes/index")
 require("dotenv").config();
 
 
@@ -36,7 +36,7 @@ startApolloServer()
 
 app.use(express.json());
 app.use("/public", express.static(path.join(__dirname, "public")));
- app.use("/api", useCor,apiRoutes );
+app.use("/api", useCor,apiRoutes );
 
  
 app.listen({ port: 4000 }, () =>

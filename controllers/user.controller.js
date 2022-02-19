@@ -64,7 +64,7 @@ exports.login = async (inputData) => {
       throw new Error("Incorrect Password/Email");
     }
     if (!user.emailVerified) {
-      throw new Error("Please verify you email before you login");
+      throw new Error("Please verify you email before you login, check your email for verification URL");
     }
 
     return exports.authenticatedResponse(user);
