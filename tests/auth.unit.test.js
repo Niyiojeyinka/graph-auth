@@ -34,42 +34,38 @@ describe("Authentication testing", () => {
   });
 
   it("can resend verication code", async () => {
-    
     const users = await authController.getAllUsers();
 
     //get the first user and request new verification token
-    const previousToken   = users[0].verification.token
+    const previousToken = users[0].verification.token;
 
     const response = await authController.resendVerification(previousToken);
 
-
-    const user  =  await User.findOne({
-      _id : users[0]._id
+    const user = await User.findOne({
+      _id: users[0]._id,
     }).populate("verification");
 
     //if latest doesn't equal new then resend successful
 
-    console.log("check here",
-    {previousToken,newToken: user.verification.token})
-
+    console.log("check here", {
+      previousToken,
+      newToken: user.verification.token,
+    });
 
     expect(previousToken == user.verification.token).toBeFalsy();
-
   });
 
-
   it("can actually verify email with valid token", async () => {
-    
     const users = await authController.getAllUsers();
 
     //get the first user and verify
-  
-   const response=  await authController.verifyEmail( users[0].verification.token);
 
-    expect( response.emailVerified).toBe(true);
+    const response = await authController.verifyEmail(
+      users[0].verification.token
+    );
 
+    expect(response.emailVerified).toBe(true);
   });
-
 });
 
-connection.dropDatabase(process.env.DB_TEST_URL)
+connection.dropDatabase(process.env.DB_TEST_URL);

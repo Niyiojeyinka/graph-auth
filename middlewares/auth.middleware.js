@@ -1,4 +1,4 @@
-const { getUserID } = require("../helpers/auth");
+const { getUserID } = require("../helpers/auth.helper");
 
 module.exports = (req, res, next) => {
   try {
